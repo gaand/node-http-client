@@ -33,32 +33,39 @@ points you'd like made clearer. We will discuss our findings.
 
 ## Demo: Make a Request
 
-Start an echo server with `node lib/http-server.js`.
-
-Make a request by running `node lib/http-client-request.js`.
+```sh
+bin/curl http://httpbin.org/get
+```
 
 ## Annotate Along: A Simple request
 
-Let's examine and run the request script, `lib/http-client-request.js`.
+Let's examine and run the request scripts and their dependencies.
+
+-   `bin/curl-callback`.
+    -   `lib/ajax-callback.js`
+-   `bin/curl`.
+    -   `lib/ajax.js`
 
 ## Lab: Compare HTTP Client with `curl` and AJAX
 
-Examine the code in [lib/http-client-request.js](lib/http-client-request.js).
-How is it similar to `curl` and AJAX? How does it differ?  Make a list.
+Examine the code in [`bin/curl-callback`](bin/curl-callback). How is it similar
+to `curl`? How does it differ?  Examine the code in
+[`lib/ajax-callback.js`](lib/ajax-callback.js).  How is it similar to `$.ajax`?
+How does it differ? Make a list.
 
-Annotate the code in [lib/http-client-equest-promises.js](lib/http-client-request-promises.js).
+Annotate the code in [`bin/curl`](bin/curl) and [`lib/ajax.js`](lib/ajax.js).
 
 ## Annotate Along: Sign up then in
 
-Let's examine and run `lib/sign-up-and-in.js`.
+Let's examine and run `bin/sign-up-and-in.js`.
 
 We'll use [library-api](https://github.com/ga-wdi-boston/library-api) to handle
  requests.
 
 ## Lab: Compare with using promises
 
-List the similarities and differences between `lib/sign-up-and-in.js` and
- `lib/sign-up-and-in-promises.js`
+List the similarities and differences between `bin/sign-up-and-in.js` and
+ `bin/sign-up-and-in-promises.js`
 
 Which has clearer flow control?
 

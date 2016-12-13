@@ -1,0 +1,42 @@
+#!/usr/bin/env node
+'use strict';
+
+const ajax = require('../lib/ajax-callback.js');
+
+let url = process.argv[2];
+let method = process.argv[3] || 'GET';
+let data = process.argv[4];
+
+const usage = () => {
+  console.error('curl <url> [method [json]]');
+};
+
+const validJSON = (json) => {
+  let valid = true;
+  try {
+    JSON.parse(json);
+  } catch (e) {
+    valid = false;
+  }
+
+  return valid;
+};
+
+if (process.argv.length < 3 ||
+    process.argv.length > 5 ||
+    !['GET', 'DELETE', 'PATCH', 'PUT', 'POST'].some(e => e === method) ||
+    data && !validJSON(data)) {
+  usage();
+  process.exit(1);
+}
+
+const config = {
+  method,
+  url,
+};
+
+if (data) {
+  config.data = data;
+}
+
+ajax(config, console.log, console.error);
